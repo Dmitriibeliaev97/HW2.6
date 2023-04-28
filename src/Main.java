@@ -15,6 +15,8 @@ public class Main {
         task3();
         System.out.println("Задание 4");
         task4();
+        System.out.println("Задание 4, второй вариант");
+        task5();
     }
 
     public static void task1() {
@@ -46,5 +48,18 @@ public class Main {
         Map<String, Long> duplicates = strings.stream().collect(Collectors.groupingBy(
                 Function.identity(), Collectors.counting()));
         duplicates.forEach((k, v) -> System.out.println(k + ": " + v));
+    }
+
+    public static void task5() {
+        Map<String, Integer> duplicates = new HashMap<>();
+        for (String string : strings) {
+            if (duplicates.containsKey(string)) {
+                duplicates.put(string, duplicates.get(string) + 1);
+            } else {
+                duplicates.put(string, 1);
+            }
+        }
+        System.out.println(duplicates);
+
     }
 }
